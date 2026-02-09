@@ -7,7 +7,7 @@ def scoring(file):
     model = joblib.load("isolation_forest.joblib")
 
 # Load test data
-    df = pd.read_csv("cleaned_test/"+file)
+    df = pd.read_csv("test/"+file)
 
 # --- CLEAN (same as training) ---
     df = df.select_dtypes(include="number")
