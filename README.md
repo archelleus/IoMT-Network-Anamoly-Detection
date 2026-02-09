@@ -57,9 +57,14 @@ Signature-based intrusion detection systems struggle in such environments.
 ## Dataset
 
 - **Dataset**: CIC IoMT (Kaggle)
-- The dataset and derived files are **NOT included** due to size and licensing constraints.
+- The dataset contains multiple CSV files representing benign traffic and various attack scenarios.
+- **Only the benign training CSV file is used for model training** in order to learn normal IoMT network behavior.
+- All other CSV files corresponding to attack scenarios are **used exclusively for evaluation** and are never included during training.
 
-Download the dataset separately and place files into appropriate `train/` and `test/` directories.
+Due to **dataset size and licensing constraints**, the dataset and all derived artifacts
+(cleaned CSVs, scaled data, trained models) are **not included** in this repository.
+The dataset must be downloaded separately from Kaggle and placed into appropriate
+`train/` and `test/` directories.
 
 ---
 
