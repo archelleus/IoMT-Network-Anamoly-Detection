@@ -1,175 +1,141 @@
-Got it 👍 — **one single `README.md` file**, clean and proper.
-Below is the **final version** you can paste **as-is** into `README.md`. Nothing else mixed in.
+# IoMT Network Anomaly Detection (Isolation Forest)
+
+Unsupervised anomaly detection for **Internet of Medical Things (IoMT)** network traffic using **Isolation Forest**, designed to support **micro-segmentation–based security monitoring**.
+
+This project learns *normal network behavior* from benign traffic and detects deviations without relying on attack labels.
 
 ---
 
-```markdown
-# IoMT Network Anomaly Detection using Isolation Forest
+## Why this project?
 
-This repository implements an **unsupervised anomaly detection framework** for
-Internet of Medical Things (IoMT) network traffic using **Isolation Forest**.
-The system is designed to support **micro-segmentation–based security monitoring**
-by detecting abnormal behavior in allowed network flows.
+IoMT networks are:
+- highly heterogeneous  
+- noisy and dynamic  
+- vulnerable to unknown / zero-day attacks  
+
+Signature-based intrusion detection systems struggle in such environments.
+
+**This project uses unsupervised learning** to detect anomalous behavior directly from network flow statistics.
 
 ---
 
-## Problem Statement
+## Core Idea
 
-IoMT networks consist of heterogeneous medical devices that generate complex and
-highly variable network traffic. Traditional signature-based intrusion detection
-systems struggle to detect **unknown or zero-day attacks** in such environments.
-
-This project addresses the problem by:
-- learning **normal IoMT network behavior** from benign traffic
-- detecting deviations using **unsupervised machine learning**
-- evaluating detection behavior across multiple real-world attack scenarios
+- Train on **benign IoMT traffic only**
+- Learn what *normal* looks like
+- Flag traffic that deviates from learned behavior
+- No attack labels used during training
 
 ---
 
 ## Approach
 
-- **Learning paradigm**: Unsupervised learning  
+- **Learning type**: Unsupervised  
 - **Model**: Isolation Forest  
-- **Training data**: Benign IoMT traffic only  
-- **Evaluation data**: Multiple attack scenarios (DoS, DDoS, ARP spoofing, scans, MQTT attacks)  
-- **Features**: Flow-level statistical and protocol features  
-- **Labels**: Not used during training  
+- **Features**: Flow-level statistical & protocol features  
+- **Training data**: Benign traffic only  
+- **Evaluation data**: Multiple attack scenarios (DoS, DDoS, ARP spoofing, scans, MQTT attacks)
 
 ---
 
 ## Repository Structure
 
 ```
-
 .
-├── data_cleaning.py        # Cleans raw CSV files (numeric features, NaN/Inf handling)
-├── scaling.py              # Fits and saves feature scaler using benign training data
-├── train_iforest.py        # Trains Isolation Forest on scaled benign data
-├── score_test_file.py      # Scores a single test file
-├── automate_test.py        # Batch evaluation across all test files
-├── requirements.txt        # Python dependencies
+├── data_cleaning.py        # Cleans raw CSV files
+├── scaling.py              # Feature scaling (benign data only)
+├── train_iforest.py        # Train Isolation Forest
+├── score_test_file.py      # Score a single test file
+├── automate_test.py        # Batch evaluation on all test files
+├── requirements.txt
 ├── .gitignore
 └── README.md
-
-````
+```
 
 ---
 
 ## Dataset
 
-This project uses the **CIC IoMT dataset** available on Kaggle.
+- **Dataset**: CIC IoMT (Kaggle)
+- The dataset and derived files are **NOT included** due to size and licensing constraints.
 
-Due to **dataset size and licensing constraints**, the dataset and all derived
-artifacts (cleaned CSVs, scaled data, trained models) are **not included** in
-this repository.
-
-The dataset must be downloaded separately and placed into appropriate
-`train/` and `test/` directories.
+Download the dataset separately and place files into appropriate `train/` and `test/` directories.
 
 ---
 
 ## Setup
 
-### Create a virtual environment (recommended)
-
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-````
-
-### Install dependencies
-
-```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Execution Pipeline
+## How to Run
 
-### 1. Data Cleaning
-
-Cleans raw CSV files by keeping numeric features and removing invalid values.
-
+### 1. Clean data
 ```bash
 python data_cleaning.py
 ```
 
----
-
-### 2. Feature Scaling
-
-Fits a `StandardScaler` using **benign training traffic only**.
-
+### 2. Scale benign training data
 ```bash
 python scaling.py
 ```
 
----
-
-### 3. Model Training
-
-Trains Isolation Forest on benign IoMT traffic.
-
+### 3. Train the model
 ```bash
 python train_iforest.py
 ```
 
----
-
-### 4. Evaluation
-
-Runs anomaly detection across all test files.
-
+### 4. Evaluate on test data
 ```bash
 python automate_test.py
 ```
 
-Outputs include:
-
-* anomaly counts
-* anomaly fractions
-* anomaly score statistics per attack type
+Evaluation outputs:
+- anomaly counts
+- anomaly fractions
+- anomaly score statistics per attack type
 
 ---
 
 ## Model Configuration
 
-* Algorithm: Isolation Forest
-* Number of trees: 300
-* Contamination: 0.02 (tuned using benign traffic to control false positives)
-* Feature scaling: StandardScaler
+- **Algorithm**: Isolation Forest  
+- **Trees**: 300  
+- **Contamination**: 0.02  
+- **Scaler**: StandardScaler  
 
 ---
 
-## Key Observations
+## Observations
 
-* Flooding and spoofing attacks generate strong anomaly signals
-* Low-rate or protocol-conformant attacks are harder to detect
-* Benign traffic exhibits limited false positives due to behavioral variability
-* Results reflect realistic IoMT network behavior rather than inflated accuracy claims
+- Flooding and spoofing attacks are strongly detected
+- Low-rate or protocol-conformant attacks are harder to detect
+- Benign traffic shows limited false positives
+- Results reflect realistic IoMT network behavior
 
 ---
 
 ## Micro-Segmentation Context
 
-The anomaly detector is intended to operate **within micro-segmented IoMT network
-zones**, where deviations in allowed communication behavior can indicate misuse
-or compromise even when access control rules are satisfied.
+The anomaly detector is intended to operate **inside micro-segmented IoMT zones**, where:
+- access control restricts communication paths
+- anomaly detection identifies misuse of allowed flows
 
 ---
 
 ## Notes
 
-* This is an **unsupervised baseline**, not a signature-based IDS
-* No attack labels are used during training
-* The focus is on interpretability, realism, and reproducibility
+- Unsupervised baseline (not signature-based IDS)
+- No attack labels used during training
+- Focus on realism and reproducibility
 
 ---
 
 ## License
 
-This repository is intended for academic and educational use.
-
-Push it. You’re done with repo hygiene.
-```
+For academic and educational use only.
