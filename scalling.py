@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 
 # ---------- CONFIG ----------
-INPUT_CSV = "your-file.csv"  #your benign-file
+INPUT_CSV = "your-file.csv"  #your training file
 SCALED_OUTPUT_CSV = "train_benign_scaled.csv"
 SCALER_PATH = "scaler.joblib"
 # ----------------------------
