@@ -3,7 +3,7 @@ from sklearn.ensemble import IsolationForest
 import joblib
 
 # ---------- CONFIG ----------
-SCALED_TRAIN_CSV = "train_benign_scaled.csv"
+SCALED_TRAIN_CSV = "your-file.csv" #Your training file
 MODEL_PATH = "isolation_forest.joblib"
 # ----------------------------
 
