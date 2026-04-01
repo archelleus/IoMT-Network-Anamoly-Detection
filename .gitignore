@@ -1,15 +1,24 @@
-# Virtual environment
+# Virtual environments
+venv/
 .venv/
+env/
+.env/
 
-# Python cache
+# IDE and caching
+.idea/
 __pycache__/
 *.pyc
 
-# Data files
+# Data and Models
+data/
+models/
 *.csv
-
-# Models and scalers
 *.joblib
+*.pkl
+
+# Temp files
+*.tmp
+*.log
 
 # OS files
 .DS_Store
