@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import score_test_file as score
 
-folder_path = "/home/bhavya-jain/Code/PBL/data/test/cleaned"
+folder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/test/cleaned")
 
 results = []
 

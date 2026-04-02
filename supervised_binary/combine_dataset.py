@@ -5,8 +5,8 @@ import time
 # ---------- START TIMER ----------
 start_time = time.time()
 
-benign_file = "/home/bhavya-jain/Code/PBL/data/train/supervised_train_benign_clean.csv"
-attack_folder = "/home/bhavya-jain/Code/PBL/data/train/attack_cleaned_binary_label"
+benign_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/supervised_train_benign_clean.csv")
+attack_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/attack_cleaned_binary_label")
 
 # ---------- LOAD BENIGN ----------
 print("Loading benign...")
@@ -44,7 +44,7 @@ print("Final shape:", final_df.shape)
 print(f"Concat time: {combine_end - combine_start:.2f}s")
 
 # ---------- SAVE ----------
-final_df.to_csv("/home/bhavya-jain/Code/PBL/data/train/binary_dataset.csv", index=False)
+final_df.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/binary_dataset.csv"), index=False)
 
 # ---------- TOTAL TIME ----------
 end_time = time.time()

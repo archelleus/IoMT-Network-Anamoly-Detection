@@ -3,9 +3,9 @@ import os
 import time
 
 # ---------- PATHS ----------
-benign_file = "/home/bhavya-jain/Code/PBL/data/train/multiclass_train_benign_clean.csv"
-attack_folder = "/home/bhavya-jain/Code/PBL/data/train/multiclass_attack_cleaned"
-output_file = "/home/bhavya-jain/Code/PBL/data/train/multiclass_dataset.csv"
+benign_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/multiclass_train_benign_clean.csv")
+attack_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/multiclass_attack_cleaned")
+output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/multiclass_dataset.csv")
 # ---------------------------
 
 start = time.time()

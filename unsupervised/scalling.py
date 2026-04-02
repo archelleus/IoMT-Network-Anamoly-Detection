@@ -1,11 +1,12 @@
+import os
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import joblib
 
 # ---------- CONFIG ----------
-INPUT_CSV = "/home/bhavya-jain/Code/PBL/data/train/unsupervised_train_benign_clean.csv"
-SCALED_OUTPUT_CSV = "/home/bhavya-jain/Code/PBL/data/train/train_benign_scaled.csv"
-SCALER_PATH = "/home/bhavya-jain/Code/PBL/models/scaler.joblib"
+INPUT_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/unsupervised_train_benign_clean.csv")
+SCALED_OUTPUT_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/train_benign_scaled.csv")
+SCALER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/scaler.joblib")
 # ----------------------------
 
 # Load cleaned training data

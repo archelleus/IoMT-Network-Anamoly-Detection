@@ -1,10 +1,11 @@
+import os
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 import joblib
 import numpy as np
 # ---------- CONFIG ----------
-SCALED_TRAIN_CSV = "/home/bhavya-jain/Code/PBL/data/train/train_benign_scaled.csv"
-MODEL_PATH = "/home/bhavya-jain/Code/PBL/models/isolation_forest.joblib"
+SCALED_TRAIN_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/train_benign_scaled.csv")
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/isolation_forest.joblib")
 # ----------------------------
 
 # Load scaled training data
@@ -41,5 +42,5 @@ train_scores = model.decision_function(X_train)
 threshold = np.percentile(train_scores, 2)   # start with 5%
 print("Learned threshold:", threshold)
 
-joblib.dump(threshold, "/home/bhavya-jain/Code/PBL/models/threshold.joblib")
+joblib.dump(threshold, os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/threshold.joblib"))
 print("Threshold saved to threshold.joblib")

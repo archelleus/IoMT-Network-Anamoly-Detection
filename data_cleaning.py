@@ -1,3 +1,4 @@
+import os
 """
 IoMT Network Traffic Data Cleaning Script
 ==========================================
@@ -270,8 +271,8 @@ class IoMTDataCleaner:
 
 if __name__ == "__main__":
     # Configuration
-    DATA_DIR = "/home/bhavya-jain/Code/PBL/test"
-    OUTPUT_DIR = "/home/bhavya-jain/Code/PBL/data/test/cleaned"
+    DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test")
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/test/cleaned")
     
     # Create cleaner instance
     cleaner = IoMTDataCleaner(data_dir=DATA_DIR, output_dir=OUTPUT_DIR)

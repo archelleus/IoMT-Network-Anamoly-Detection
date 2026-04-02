@@ -1,11 +1,12 @@
+import os
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 import time
 
 # ---------- CONFIG ----------
-DATASET = "/home/bhavya-jain/Code/PBL/data/train/multiclass_dataset.csv"
-MODEL_PATH = "/home/bhavya-jain/Code/PBL/models/rf_multiclass.joblib"
+DATASET = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/train/multiclass_dataset.csv")
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/rf_multiclass.joblib")
 MAX_PER_CLASS = 100000   # increase/decrease based on RAM
 # ----------------------------
 
