@@ -10,7 +10,7 @@ model = joblib.load(model_path)
 
 def scoring(file):
     import os
-test_dir = os.path.join(os.path.dirname(__file__), "../../data/test/cleaned")
+    test_dir = os.path.join(os.path.dirname(__file__), "../../data/test/cleaned")
     df = pd.read_csv(os.path.join(test_dir, file))
 
     # --- CLEAN ---
@@ -26,7 +26,7 @@ test_dir = os.path.join(os.path.dirname(__file__), "../../data/test/cleaned")
 
     # --- SCORE ---
     threshold_path = os.path.join(os.path.dirname(__file__), "../../models/threshold.joblib")
-threshold = joblib.load(threshold_path)
+    threshold = joblib.load(threshold_path)
     scores = model.decision_function(X_test_scaled)
     preds = np.where(scores < threshold, -1, 1)
 
