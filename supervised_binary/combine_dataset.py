@@ -6,7 +6,7 @@ import time
 start_time = time.time()
 
 benign_file = "/home/bhavya-jain/Code/PBL/data/train/supervised_train_benign_clean.csv"
-attack_folder = "/home/bhavya-jain/Code/PBL/data/train/attack_cleaned"
+attack_folder = "/home/bhavya-jain/Code/PBL/data/train/attack_cleaned_binary_label"
 
 # ---------- LOAD BENIGN ----------
 print("Loading benign...")
